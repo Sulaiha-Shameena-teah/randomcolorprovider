@@ -61,7 +61,7 @@ const convertRGBtoHEX = (rgb) => {
 		if( eachValue < 0 || eachValue > 255){
 			return "error"
 		}
-		hexValue += hexaDecimaHelperFuncation();
+		hexValue += hexaDecimaHelperFuncation(eachValue);
 	}
 	return hexValue
 }
