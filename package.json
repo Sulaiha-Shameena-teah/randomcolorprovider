@@ -1,11 +1,15 @@
 {
   "name": "randomcolorgiver",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "randomcolorprovider.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sulaiha-Shameena-teah/randomcolorprovider.git"
+  },  
   "keywords": [
     "Randomcolor"
   ],
