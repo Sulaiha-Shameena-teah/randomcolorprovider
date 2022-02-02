@@ -44,7 +44,7 @@ convertRGBtoHEX(string rgbValue)
 
 generateHSL({hue: number, saturation: number, lightness: number, opacity: float}))
 
-> It generates HSL and HSLA. The constraints can also be passed for hue, saturation, lightness, opacity. The constraints are optional. If a constraint is not provided, the package will randomly generate the constraints.  
+> It generates HSL and HSLA. The constraints can also be passed for hue, saturation, lightness, opacity. The constraints are optional. If a constraint is not provided, the package will randomly generate that constraint.  
 
 >| 	contraints 		| 	min  	| max   |
 >|-------------------|-----------|-------|	
@@ -53,6 +53,7 @@ generateHSL({hue: number, saturation: number, lightness: number, opacity: float}
 >|   lightness     	|	0		|	100	|
 >|   opacity      	|	0		|	1	|
 
-> Example1: generateHSL({hue: 5, saturation: 10, lightness: 100, opacity: 0.1}) => 'hsl(5, 10%, 100%, 0.1)'
-> Example2: generateHSL({hue: 5, lightness: 100, opacity: 0.1}) => 'hsl(5, 16%, 100%, 0.1)'	
-> Example3: generateHSL() => 'hsl(173, 80%, 90%, 0.3)'
+>Examples: 
+> + generateHSL({hue: 5, saturation: 10, lightness: 100, opacity: 0.1}) => 'hsl(5, 10%, 100%, 0.1)'
+> + generateHSL({hue: 5, lightness: 100, opacity: 0.1}) => 'hsl(5, 16%, 100%, 0.1)'	
+> + generateHSL() => 'hsl(173, 80%, 90%, 0.3)'
