@@ -67,7 +67,6 @@ const convertRGBtoHEX = (rgb) => {
 }
 
 const generateHSL = (obj = {}) => {
-	console.log('hello\n', typeof (obj.saturation))
 	if(obj.saturation && (typeof (obj.saturation) !== 'number' || (obj.saturation < 0 || obj.saturation > 100))) 
 		throw "Error : saturation range should be between 0 and 100"
 	if(obj.lightness && (typeof (obj.lightness) !== 'number' || (obj.lightness < 0 || obj.lightness > 100)))
