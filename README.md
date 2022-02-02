@@ -40,4 +40,17 @@ generateHEXUsingAlphaShort()
 convertRGBtoHEX(string rgbValue)
 
 > It take rgb string as argument and give its corresponding hexa color as output.
-> Example: 'rgb(0, 330 ,70)' => ,'rgb(0, 330 ,70)' => error
+> Example: 'rgb(0, 330 ,70)' => ,'rgb(0, 330 ,70)' => throws error
+
+generateHSL({hue: number, saturation: number, lightness: number, opacity: float}))
+
+> It generates HSL and HSLA. The constraints can also be passed for hue, saturation, lightness, opacity. The constraints are optional. 
+
+| 	contraints 		| 	min  	| max   |
+|-------------------|-----------|-------|	
+|   hue      		|	0		|	360	|
+|   saturation      |	0		|	100	|
+|   lightness     	|	0		|	100	|
+|   opacity      	|	0		|	1	|
+
+> Example: generateHSL({hue: 5, saturation: 10, lightness: 100, opacity: 0.1})) 
