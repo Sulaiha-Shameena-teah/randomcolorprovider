@@ -21,36 +21,32 @@ const hexaDecimaHelperFuncation = (num) => {
 
 // Main Funcations
 
-const generateRandomRGB = () => {
-	return `rgb(${range(0, 255)}, ${range(0, 255)}, ${range(0, 255)})`;
-}
+const generateRandomRGB = (obj = {}) => {
+	if(obj.Red && (typeof (obj.Red) !== 'number' || (obj.Red < 0 || obj.Red > 100))) 
+		throw "Error : Red range should be between 0 and 255"
+	if(obj.Green && (typeof (obj.Green) !== 'number' || (obj.Green < 0 || obj.Green > 100)))
+		throw "Error : Green range should be between 0 and 255"
+	if(obj.Blue &&  (typeof (obj.Blue) !== 'number' || (obj.Blue < 0 || obj.Blue > 360)))
+		throw "Error : Blue range should be between 0 and 255"
+	if(obj.opacity && (typeof (obj.opacity) !== 'number' || (obj.opacity < 0 || obj.opacity > 1)))
+		throw "Error : opacity range should be between 0 and 1"
+		const formatSpecified = obj.format || 'rgb';
+		if(formatSpecified != 'rgb' && formatSpecified != 'rgba')
+			throw "Error : provide valid format - rgb or rgba"
+	return `${formatSpecified}(${obj.Red || range(0, 255)}, ${obj.Green || range(0, 255)}%, ${obj.Blue || range(0, 255)}%, ${obj.opacity || opacityRange() })`
+} 
 
-const generateRandomRGBA = () => {
-	return `rgba(${range(0, 255)}, ${range(0, 255)}, ${range(0, 255)}, ${opacityRange()})`;
-}
-
-const generateHEXUsingNumber = () => {
-	let range1 = hexaDecimaHelperFuncation(range(0,255));
-	let range2 = hexaDecimaHelperFuncation(range(0,255));
-	let range3 = hexaDecimaHelperFuncation(range(0,255));
-	return `#${range1 + range2 + range3}`
-}
-
-const generateHEXUsingAlphaLong = () => {
+const generateHEXcolor = (count = 6) => {
+	if(count != 3 && count != 6){
+		throw "Error : The Hex Color format should be either 3 or 6"
+	}
 	let hexValue = "#"; 
-	for(var i=0; i < 6; i++){
+	for(var i=0; i < count; i++){
 		hexValue += HEXADECIMALCONSTANT[range(0, 16)];
 	}
 	return hexValue;
 }
 
-const generateHEXUsingAlphaShort = () => {
-	let hexValue = "#"; 
-	for(var i=0; i < 3; i++){
-		hexValue += HEXADECIMALCONSTANT[range(0, 16)];
-	}
-	return hexValue;
-}
 
 const convertRGBtoHEX = (rgb) => {
 	const regexpWithoutE = /[\d]+/ig;
@@ -75,7 +71,10 @@ const generateHSL = (obj = {}) => {
 		throw "Error : hue range should be between 0 and 360"
 	if(obj.opacity && (typeof (obj.opacity) !== 'number' || (obj.opacity < 0 || obj.opacity > 1)))
 		throw "Error : opacity range should be between 0 and 1"
-	return `hsl(${obj.hue || range(0, 360)}, ${obj.saturation || range(0, 101)}%, ${obj.lightness || range(0, 101)}%, ${obj.opacity || opacityRange() })`
+	const formatSpecified = obj.format || 'hsl';
+	if(formatSpecified != 'hsl' && formatSpecified != 'hsla')
+		throw "Error : provide valid format - hsl or hsla"
+	return `${formatSpecified}(${obj.hue || range(0, 360)}, ${obj.saturation || range(0, 101)}%, ${obj.lightness || range(0, 101)}%, ${obj.opacity || opacityRange() })`
 }
 
-module.exports = { generateRandomRGB, generateRandomRGBA, generateHEXUsingNumber, generateHEXUsingAlphaLong, generateHEXUsingAlphaShort, convertRGBtoHEX, generateHSL }
+module.exports = { generateRandomRGB, generateHEXcolor, convertRGBtoHEX, generateHSL }
