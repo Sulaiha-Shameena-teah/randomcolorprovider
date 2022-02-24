@@ -22,18 +22,18 @@ const hexaDecimaHelperFuncation = (num) => {
 // Main Funcations
 
 const generateRandomRGB = (obj = {}) => {
-	if(obj.Red && (typeof (obj.Red) !== 'number' || (obj.Red < 0 || obj.Red > 100))) 
+	if(obj.Red && (typeof (obj.Red) !== 'number' || (obj.Red < 0 || obj.Red > 255))) 
 		throw "Error : Red range should be between 0 and 255"
-	if(obj.Green && (typeof (obj.Green) !== 'number' || (obj.Green < 0 || obj.Green > 100)))
+	if(obj.Green && (typeof (obj.Green) !== 'number' || (obj.Green < 0 || obj.Green > 255)))
 		throw "Error : Green range should be between 0 and 255"
-	if(obj.Blue &&  (typeof (obj.Blue) !== 'number' || (obj.Blue < 0 || obj.Blue > 360)))
+	if(obj.Blue &&  (typeof (obj.Blue) !== 'number' || (obj.Blue < 0 || obj.Blue > 255)))
 		throw "Error : Blue range should be between 0 and 255"
 	if(obj.opacity && (typeof (obj.opacity) !== 'number' || (obj.opacity < 0 || obj.opacity > 1)))
 		throw "Error : opacity range should be between 0 and 1"
 		const formatSpecified = obj.format || 'rgb';
 		if(formatSpecified != 'rgb' && formatSpecified != 'rgba')
 			throw "Error : provide valid format - rgb or rgba"
-	return `${formatSpecified}(${obj.Red || range(0, 255)}, ${obj.Green || range(0, 255)}%, ${obj.Blue || range(0, 255)}%, ${obj.opacity || opacityRange() })`
+	return `${formatSpecified}(${obj.Red || range(0, 255)}, ${obj.Green || range(0, 255)}, ${obj.Blue || range(0, 255)}, ${obj.opacity || opacityRange() })`
 } 
 
 const generateHEXcolor = (count = 6) => {

@@ -12,39 +12,39 @@ PackageName.FunctionName(Arguments List, if any)
 
 ## FUNCTIONS
 
-generateRandomRGB()
+generateRandomRGB({Red: number, Green: number, Blue: number, opacity: float, format: string})
 
-> It returns a valid rgb string
-> Example: rgb(14, 124, 51)
+> It generates RGB and RGBA. The constraints can also be passed for Red, Green, Blue, opacity, format. The constraints are optional. If a constraint is not provided, the package will randomly generate that constraint. By default, the format is 'rgb'. The format should be either 'rgb' or 'rgba'
 
-generateRandomRGBA()
+>| 	contraints 		| 	min  	| max   |
+>|-------------------|-----------|-------|	
+>|   Red      		|	0		|	255	|
+>|   Green      |	0		|	255	|
+>|   Blue     	|	0		|	255	|
+>|   opacity      	|	0		|	1	|
 
-> It returns a valid rgba string
-> Example: rgba(51, 93, 166, 0.8)
+>Examples: 
+> + generateRandomRGB({Red: 5, Green: 10, Blue: 100, opacity: 0.1}) => 'rgb(5, 10, 100, 0.1)'
+> + generateRandomRGB({Red: 5, Blue: 100, opacity: 0.1}) => 'rgb(5, 89, 100, 0.1)'	
+> + generateRandomRGB() => 'rgb(9, 6, 227, 0.6)'
+> + generateRandomRGB({Red: 5, Green: 10, Blue: 100, opacity: 0.1, format: 'rgba'}) => 'rgba(5, 10, 100, 0.1)'
 
-generateHEXUsingNumber()
 
-> It returns a valid hexa color string. This method selects 3 number randomly and generate corresponding hexadecimal values
-> Example: #F9323C
+generateHEXcolor(number count)
 
-generateHEXUsingAlphaLong()
-
-> It returns a valid hexa color string. This method selects 6 Hexadecimal digits randomly.
-> Example: #2BD26D
-
-generateHEXUsingAlphaShort()
-
-> It returns a valid hexa color string. This method selects 3 Hexadecimal digits randomly.
-> Example: #EC4
+> It returns a valid hexa color string. By default, the count is 6. It accepts 3 or 6. 
+> Example: 
+> + generateHEXcolor() or generateHEXcolor(6) => #F9323C 
+> + generateHEXcolor(3) => #0CC
 
 convertRGBtoHEX(string rgbValue)
 
 > It take rgb string as argument and give its corresponding hexa color as output.
 > Example: 'rgb(0, 33 ,70)' => #002A46 ,'rgb(0, 330 ,70)' => throws error
 
-generateHSL({hue: number, saturation: number, lightness: number, opacity: float}))
+generateHSL({hue: number, saturation: number, lightness: number, opacity: float, format: string})
 
-> It generates HSL and HSLA. The constraints can also be passed for hue, saturation, lightness, opacity. The constraints are optional. If a constraint is not provided, the package will randomly generate that constraint.  
+> It generates HSL and HSLA. The constraints can also be passed for hue, saturation, lightness, opacity, format. The constraints are optional. If a constraint is not provided, the package will randomly generate that constraint. By default, the format is 'hsl'. The format should be either 'hsl' or 'hsla' 
 
 >| 	contraints 		| 	min  	| max   |
 >|-------------------|-----------|-------|	
@@ -57,3 +57,4 @@ generateHSL({hue: number, saturation: number, lightness: number, opacity: float}
 > + generateHSL({hue: 5, saturation: 10, lightness: 100, opacity: 0.1}) => 'hsl(5, 10%, 100%, 0.1)'
 > + generateHSL({hue: 5, lightness: 100, opacity: 0.1}) => 'hsl(5, 16%, 100%, 0.1)'	
 > + generateHSL() => 'hsl(173, 80%, 90%, 0.3)'
+> + generateHSL({hue: 5, saturation: 10, lightness: 100, opacity: 0.1, format: 'hsla'}) => 'hsla(5, 10%, 100%, 0.1)'
